@@ -28,6 +28,8 @@ RUN /opt/aws/install
 # Check install
 RUN ln -s /opt/aws/aws2 --version
 
+USER 1000
+
 ENTRYPOINT ["/usr/local/bin/aws2"]
 CMD ["--version"]
 
