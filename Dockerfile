@@ -6,7 +6,9 @@ ENV signature "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip
 ENV zipfile "awscliv2.zip"
 ENV sigfile "awscliv2.sig"
 
-RUN microdnf install unzip gnupg \
+ENV required_packages "unzip gnupg less"
+
+RUN microdnf install ${required_packages} \
       && microdnf clean all \
       && rm -rf /var/cache/yum
 
