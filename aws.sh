@@ -15,7 +15,11 @@ aws2() {
     build
   fi
 
-  podman run --rm -it ${IMAGE} "${@}"
+  podman run --rm \
+    --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+    --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+    --interactive \
+    --tty ${IMAGE} "${@}"
 }
 
 if [[ "${1}" == "build-image" ]]

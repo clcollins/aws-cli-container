@@ -30,6 +30,10 @@ aws2() {
     curl ${dockerfile} | podman build -t ${image} -f - .
   fi
 
-  podman run --rm -it ${image} "${@}"
+  podman run --rm \
+  --env AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
+  --env AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
+  --interactive \
+  --tty ${IMAGE} "${@}"
 }
 ```
