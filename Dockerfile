@@ -23,10 +23,8 @@ RUN curl "${client}" -o ${zipfile} \
       && unzip ${zipfile} -d /opt \
       && rm -rf ${sigfile} ${zipfile}
 
-RUN /opt/aws/install
-
-# Check install
-RUN ln -s /opt/aws/aws2 --version
+RUN /opt/aws/install \
+      && aws2 --version
 
 USER 1000
 
